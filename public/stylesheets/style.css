@@ -20,10 +20,11 @@ a {
   border-radius: 20px;
   padding: 10px;
   background-color: white;
-  max-width: 400px;
+  max-width: 500px;
   min-width: 200px;
-  font-size: 32px;
+  font-size: 36px;
 }
+
 
 .added{
   font-size: 14px;
@@ -32,6 +33,14 @@ a {
 
 .user{
   text-align: end;
+  font-size: 28px;
+}
+
+button{
+  width: 150px;
+  height: 40px;
+  background-color:lightblue;
+  color: black;
   font-size: 24px;
 }
 
@@ -41,9 +50,10 @@ a {
   border-style: solid;
   padding: 10px;
   background-color: white;
-  max-width: 400px;
+  max-width: 500px;
   gap: 10px;
   margin-bottom: 50px;
   min-width: 200px;
   border-radius: 20px;
+  font-size: 20px;
 }
