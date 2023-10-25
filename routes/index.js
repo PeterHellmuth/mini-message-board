@@ -1,22 +1,13 @@
 var express = require("express");
+const Message = require("../models/message");
 var router = express.Router();
-
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Mini Messageboard", messages: messages });
+  res.render("index", {
+    title: "Mini Messageboard",
+    messages: req.app.locals.messages,
+  });
 });
 
 /* GET home page. */
@@ -25,11 +16,12 @@ router.get("/new", function (req, res, next) {
 });
 
 router.post("/new", function (req, res, next) {
-  messages.push({
+  const newMessage = new Message({
     text: req.body.messageText,
     user: req.body.username,
-    added: new Date(),
   });
+  newMessage.save();
+  req.app.locals.messages.push(newMessage);
   res.redirect("/");
 });
 
