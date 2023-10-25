@@ -3,7 +3,6 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 require("dotenv").config();
@@ -50,5 +49,10 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+async function sendMessage(message) {
+  await message.save;
+  messages.push(message);
+}
 
 module.exports = app;
