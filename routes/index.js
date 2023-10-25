@@ -3,24 +3,20 @@ const Message = require("../models/message");
 var router = express.Router();
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
+router.get("/", async function (req, res, next) {
+  req.app.locals.messages = await Message.find();
   res.render("index", {
     title: "Mini Messageboard",
     messages: req.app.locals.messages,
   });
 });
 
-/* GET home page. */
-router.get("/new", function (req, res, next) {
-  res.render("form", { title: "Mini Messageboard" });
-});
-
-router.post("/new", function (req, res, next) {
+router.post("/new", async function (req, res, next) {
   const newMessage = new Message({
     text: req.body.messageText,
     user: req.body.username,
   });
-  newMessage.save();
+  await newMessage.save();
   req.app.locals.messages.push(newMessage);
   res.redirect("/");
 });
