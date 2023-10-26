@@ -13,12 +13,10 @@ var app = express();
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const mongoDB = `mongodb+srv://peterhellmuth:${process.env.MONGOOSE_PASS}@cluster0.kterel9.mongodb.net/mini-message-app?retryWrites=true&w=majority`;
-const Message = require("./models/message");
 
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
-  app.locals.messages = await Message.find();
 }
 
 // view engine setup
